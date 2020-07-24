@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
  * @Date 2019-11-01
  */
 public class Strings extends StringUtils {
+    public static final String CHARSET_UTF_8 = "UTF-8";
+
     public static final String QUOTE = "'";
     public static final String DOUBLE_QUOTE = "\"";
     public static final String PERIOD = ".";
