@@ -12,10 +12,10 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modules>
-    <module>intem-sdk-commons</module>
-    <module>intem-sdk-compression</module>
-    <module>intem-sdk-json</module>
-    <module>intem-sdk-httpclient</module>
+    <module>intem-commons</module>
+    <module>intem-compression</module>
+    <module>intem-json</module>
+    <module>intem-httpclient</module>
   </modules>
   <name>intem-sdk</name>
   <developers>
