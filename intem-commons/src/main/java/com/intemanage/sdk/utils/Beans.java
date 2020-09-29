@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class Beans {
 
+    // 缓存基础类型转换关系
     private static final Map<Class<?>, Class<?>> baseTypeMapping = new HashMap<>();
     static {
         baseTypeMapping.put(byte.class, Byte.class);
@@ -26,6 +27,13 @@ public class Beans {
         baseTypeMapping.put(Boolean.class, Boolean.class);
     }
 
+    /**
+     * 判断两个类是否是相同类型（平级比较，非父亲结构）
+     *
+     * @param one
+     * @param two
+     * @return
+     */
     public static boolean isSameType(Class<?> one, Class<?> two) {
         if (one == null || two == null) {
             return false;
@@ -43,20 +51,36 @@ public class Beans {
         return false;
     }
 
-    public static boolean isAAssignableFromB(Class<?> classA, Class<?> classB) {
-        if (classA == null || classB == null) {
+    /**
+     * 判断 parentType 是否是 subType 的子类
+     *
+     * @param parentType
+     * @param subType
+     * @return
+     */
+    public static boolean isAssignableFrom(Class<?> parentType, Class<?> subType) {
+        if (parentType == null || subType == null) {
             return false;
         }
 
-        Class<?> baseOneType = baseTypeMapping.get(classA);
-        if (baseOneType != null) {
-            Class<?> baseTwoType = baseTypeMapping.get(classB);
-            return baseTwoType != null && baseOneType == baseTwoType;
+        Class<?> baseParentType = baseTypeMapping.get(parentType);
+        if (baseParentType != null) {
+            Class<?> baseTwoType = baseTypeMapping.get(subType);
+            return baseTwoType != null && subType == baseTwoType;
         }
 
-        return classA.isAssignableFrom(classB);
+        return parentType.isAssignableFrom(subType);
     }
 
+    /**
+     * 将 fromObject 中与 toObject 中同名字段的值复制到 toObject 对象中
+     *
+     * @param fromObject
+     * @param toObject
+     * @param <F>
+     * @param <T>
+     * @return
+     */
     public static <F, T> T copyProps(F fromObject, T toObject) {
         if (fromObject == null || toObject == null) {
             return toObject;

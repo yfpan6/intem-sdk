@@ -8,8 +8,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>intem-sdk-json</artifactId>
-    <name>intem-sdk-json</name>
+    <artifactId>intem-json</artifactId>
+    <name>intem-json</name>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
